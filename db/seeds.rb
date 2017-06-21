@@ -12,7 +12,7 @@ puts "10 blog posts created"
 
 5.times do |skill|
   Skill.create!(
-    title: "Rails #{skills}",
+    title: "Rails #{skill}",
     percent_utilized: 15
     )
   end
@@ -32,7 +32,6 @@ and, to inure thyself to what thou art like to be,
 cast thy humble slough and appear fresh.",
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/350x200",
-      
       )
-  
+  end
   puts "9 portfolios items created"
