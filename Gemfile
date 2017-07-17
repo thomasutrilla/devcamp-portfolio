@@ -57,3 +57,4 @@ gem 'devise', '~> 4.3'
 
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'utrilla_view_tool', git: 'https://github.com/thomasutrilla/utrilla_view_tool'
+gem 'petergate', '~> 1.7'
