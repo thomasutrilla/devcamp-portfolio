@@ -4,7 +4,7 @@ class PortfoliosController < ApplicationController
   access all: [:show, :index, :angular], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
   
   def index
-    @portfolio_items = Portfolio.all
+    @portfolio_items = Portfolio.by_position
   end
   
   def angular
@@ -31,7 +31,7 @@ class PortfoliosController < ApplicationController
   def edit
   end
   
-   def update
+  def update
      
     respond_to do |format|
       if @portfolio_item.update(portfolio_params)
