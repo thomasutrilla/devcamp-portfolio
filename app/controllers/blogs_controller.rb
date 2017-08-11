@@ -1,9 +1,7 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status
-  ]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
   layout "blog"
-  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit, :toggle_status
-  ]}, site_admin: :all
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit, :toggle_status]}, site_admin: :all
 
   # GET /blogs
   # GET /blogs.json
@@ -17,7 +15,7 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.includes(:comments).friendly.find(params[:id])
     @comment = Comment.new
-    
+
     @page_title = @blog.title
     @seo_keywords = @blog.body
   end
@@ -38,11 +36,9 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
-      
+        format.html { redirect_to @blog, notice: 'Your post is now live.' }
       else
         format.html { render :new }
-        
       end
     end
   end
@@ -53,10 +49,8 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.update(blog_params)
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
-        
       else
         format.html { render :edit }
-        
       end
     end
   end
@@ -66,18 +60,18 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Post was removed' }
+      format.html { redirect_to blogs_url, notice: 'Post was removed.' }
       format.json { head :no_content }
     end
   end
-  
+
   def toggle_status
-   if @blog.draft?
+    if @blog.draft?
       @blog.published!
-      elsif @blog.published?
+    elsif @blog.published?
       @blog.draft!
     end
-      
+        
     redirect_to blogs_url, notice: 'Post status has been updated.'
   end
 
